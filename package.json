@@ -1,0 +1,52 @@
+{
+  "name": "dockrics",
+  "version": "0.0.0",
+  "description": "The docker metrics app",
+  "main": "app.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/houssemba/dockrics.git"
+  },
+  "keywords": [
+    "Docker",
+    "metrics",
+    "monitor",
+    "containers"
+  ],
+  "author": "Houssem BELHADJ AHMED",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/houssemba/dockrics/issues"
+  },
+  "devDependencies": {
+    "connect-livereload": "~0.5.3",
+    "gulp-concat": "~2.5.2",
+    "gulp-livereload": "~3.8.0",
+    "gulp-embedlr": "~0.5.2",
+    "express": "~4.12.2",
+    "gulp-clean": "~0.3.1",
+    "tiny-lr": "~0.1.5",
+    "gulp-util": "~3.0.4",
+    "gulp": "~3.8.11",
+    "gulp-jshint": "~1.9.2",
+    "browserify": "~9.0.3",
+    "gulp-browserify": "~0.5.1",
+    "angular": "~1.3.14",
+    "angular-mocks": "~1.3.14",
+    "bootstrap": "~3.3.2",
+    "angular-resource": "~1.3.14",
+    "gulp-express": "~0.3.2",
+    "jasmine-core": "~2.2.0",
+    "karma-jasmine": "~0.3.5",
+    "gulp-jasmine": "~2.0.0",
+    "karma": "~0.12.31",
+    "karma-spec-reporter": "0.0.16",
+    "karma-phantomjs-launcher": "~0.1.4",
+    "karma-chrome-launcher": "~0.1.7",
+    "gulp-karma": "0.0.4",
+    "angular-route": "~1.3.14"
+  }
+}
