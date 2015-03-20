@@ -3,7 +3,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var Modem = require('docker-modem');
-
 var app = express();
 var dockerapi = express();
 
@@ -97,30 +96,31 @@ dockerapi.get('/containers/:id/top', function(req, res) {
 
 /**
  * Container stats.
- * FIXME
+ * FIXME later
  */
 dockerapi.get('/containers/:id/stats', function(req, res) {
-   var request = {
-       path: '/containers/' + req.params.id + '/stats?',
-       method: 'GET',
-       isStream : true,
-       statusCodes: {
-           200: true,
-           404: "no such container",
-           500: "server error"
-       }
-   };
-    console.log("here !! ");
+    var request = {
+        path: '/containers/' + req.params.id + '/stats?',
+        method: 'GET',
+        isStream: true,
+        statusCodes: {
+            200: true,
+            404: "no such container",
+            500: "server error"
+        },
+        options: {}
+    };
+
     dockerModem.dial(request, function(err, data) {
        if (err) {
-           console.log("ERROR ! ");
-           console.log(err);
            return res.json(err);
        }
         else {
-           console.log("SUCCESS ! ");
-           console.log(data);
-            return res.json(data);
+           console.log("here ! ");
+           data.on('data', function(containerStats) {
+               data.destroy();
+               return res.json(JSON.parse(containerStats));
+           });
        }
     });
 });
