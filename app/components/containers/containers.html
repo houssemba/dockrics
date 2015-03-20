@@ -14,7 +14,7 @@
         <tbody>
             <tr ng-repeat="container in containers">
                 <td>
-                    <button class="btn btn-xs btn-success" title="Inspect"><span class="glyphicon glyphicon-eye-open"></span></button>
+                    <a class="btn btn-xs btn-success" title="Inspect" href="#/containers/{{container.Id}}"><span class="glyphicon glyphicon-eye-open"></span></a>
                     <button class="btn btn-xs btn-danger" title="Stop container"><span class="glyphicon glyphicon-stop"></span></button>
                 </td>
                 <td>{{container.Names[0]}}</td>

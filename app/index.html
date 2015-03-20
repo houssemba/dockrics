@@ -2,7 +2,7 @@
 <html ng-app="dockrics">
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Dockrics - The docker metrics xapp</title>
+    <title>Dockrics - The docker metrics app</title>
 
     <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
 </head>
@@ -11,12 +11,13 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">
-                    Dockrics
+                    Dockrics - The docker metrics app
                 </a>
             </div>
             <ul class="nav navbar-nav">
                 <li ng-class="{active: isActive('/')}"><a href="#/">Dashboard</a></li>
                 <li ng-class="{active: isActive('/containers')}"><a href="#/containers">Containers</a></li>
+                <li ng-class="{active: isActive('/settings')}"><a href="#/settings">Settings</a></li>
             </ul>
         </div>
     </nav>
@@ -32,6 +33,7 @@
     <script type="text/javascript" src="resources/container.js"></script>
     <script type="text/javascript" src="components/dashboard/dashboardController.js"></script>
     <script type="text/javascript" src="components/containers/containers.js"></script>
+    <script type="text/javascript" src="components/container/container.js"></script>
 
 </body>
 </html>
