@@ -4,4 +4,9 @@ angular.module('dockrics')
             $scope.container = data;
             console.log($scope.container);
         });
+
+        Container.stats({id: $routeParams.id}, function(data) {
+            $scope.stats = data;
+            console.log("container data : "+ JSON.stringify($scope.stats) );
+        });
     }]);
