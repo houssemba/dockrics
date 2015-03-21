@@ -1,62 +1,64 @@
-<div class="container">
-    <div class="containerStats">
-        <h3>{{container.Name}}</h3>
-        {{container}}
-    </div>
-    <div class="containerDetails">
-        <table class="table table-striped">
-            <tbody>
-            <tr>
-                <td>Started at:</td>
-                <td>
-                    <label class="label label-info">{{container.State.StartedAt | date : 'medium'}}</label>
-                </td>
-            </tr>
-            <tr>
-                <td>Hostname:</td>
-                <td>{{ container.Config.Hostname }}</td>
-            </tr>
-            <tr>
-                <td>Exposed Ports:</td>
-                <td>
-                    <ul>
-                        <li ng-repeat="(k, v) in container.Config.ExposedPorts">{{ k }}</li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>Ports:</td>
-                <td>
-                    <ul style="display:inline-table">
-                        <li ng-repeat="(containerport, hostports) in container.HostConfig.PortBindings">
-                            {{ containerport }} => <span class="label label-default" ng-repeat="(k,v) in hostports">{{ v.HostIp }}:{{ v.HostPort }}</span>
-                        </li>
-                    </ul>
-                </td>
+<div class="containerStats">
+    <h3>{{container.Name}}</h3>
+</div>
+<div class="containerDetails">
+    <table class="table table-striped">
+        <tbody>
+        <tr>
+            <td>Started at:</td>
+            <td>
+                <label class="label label-info">{{container.State.StartedAt | date : 'medium'}}</label>
+            </td>
+        </tr>
+        <tr>
+            <td>Hostname:</td>
+            <td>{{ container.Config.Hostname }}</td>
+        </tr>
+        <tr>
+            <td>Exposed Ports:</td>
+            <td>
+                <ul>
+                    <li ng-repeat="(k, v) in container.Config.ExposedPorts">{{ k }}</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>Ports:</td>
+            <td>
+                <ul style="display:inline-table">
+                    <li ng-repeat="(containerport, hostports) in container.HostConfig.PortBindings">
+                        {{ containerport }} => <span class="label label-default" ng-repeat="(k,v) in hostports">{{ v.HostIp }}:{{ v.HostPort }}</span>
+                    </li>
+                </ul>
+            </td>
 
-            </tr>
-            <tr>
-                <td>IPAddress:</td>
-                <td>{{ container.NetworkSettings.IPAddress }}</td>
-            </tr>
-            <tr>
-                <td>Cmd:</td>
-                <td>{{ container.Config.Cmd }}</td>
-            </tr>
-            <tr>
-                <td>Entrypoint:</td>
-                <td>{{ container.Config.Entrypoint }}</td>
-            </tr>
-            <tr>
-                <td>Volumes:</td>
-                <td>{{ container.Volumes }}</td>
-            </tr>
-
-            <tr>
-                <td>SysInitpath:</td>
-                <td>{{ container.SysInitPath }}</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+        </tr>
+        <tr>
+            <td>IPAddress:</td>
+            <td>{{ container.NetworkSettings.IPAddress }}</td>
+        </tr>
+        <tr>
+            <td>Cmd:</td>
+            <td>{{ container.Config.Cmd }}</td>
+        </tr>
+        <tr>
+            <td>Entrypoint:</td>
+            <td>{{ container.Config.Entrypoint }}</td>
+        </tr>
+        <tr>
+            <td>Volumes:</td>
+            <td>{{ container.Volumes }}</td>
+        </tr>
+        <tr>
+            <td>SysInitpath:</td>
+            <td>{{ container.SysInitPath }}</td>
+        </tr>
+        <tr>
+            <td>Top:</td>
+            <td>
+                <a class="btn btn-xs btn-default" href="#/containers/{{container.Id}}/top">Docker Top</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>

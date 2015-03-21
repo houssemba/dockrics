@@ -11,7 +11,7 @@ var dockerModem = new Modem();
 
 // these statements config express to use these modules, and only need to be run once
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.use('/', express.static('node_modules'));
 app.use('/', express.static('app'));
@@ -22,13 +22,13 @@ app.use('/dockerapi', dockerapi);
 var port = 9090;
 
 app.listen(port, function () {
-        console.log("Server listening on port " + port);
+    console.log("Server listening on port " + port);
 });
 
 /**
  * List containers.
  */
-dockerapi.get('/containers/json', function(req, res) {
+dockerapi.get('/containers/json', function (req, res) {
     var request = {
         path: '/containers/json?',
         method: 'GET',
@@ -38,7 +38,7 @@ dockerapi.get('/containers/json', function(req, res) {
             500: "server error"
         }
     };
-    dockerModem.dial(request, function(err, data) {
+    dockerModem.dial(request, function (err, data) {
         if (err) {
             return res.json(err);
         }
@@ -51,7 +51,7 @@ dockerapi.get('/containers/json', function(req, res) {
 /**
  * Container.
  */
-dockerapi.get('/containers/:id/json', function(req, res) {
+dockerapi.get('/containers/:id/json', function (req, res) {
     var request = {
         path: '/containers/' + req.params.id + '/json?',
         method: 'GET',
@@ -61,36 +61,36 @@ dockerapi.get('/containers/:id/json', function(req, res) {
             500: "server error"
         }
     };
-    dockerModem.dial(request, function(err, data) {
-       if (err) {
-           return res.json(err);
-       }
+    dockerModem.dial(request, function (err, data) {
+        if (err) {
+            return res.json(err);
+        }
         else {
-           return res.json(data);
-       }
+            return res.json(data);
+        }
     });
 });
 
 /**
  * Container top.
  */
-dockerapi.get('/containers/:id/top', function(req, res) {
+dockerapi.get('/containers/:id/top', function (req, res) {
     var request = {
         path: '/containers/' + req.params.id + '/top?',
         method: 'GET',
-        statusCodes : {
+        statusCodes: {
             200: true,
             404: "no such container",
             500: "server error"
         }
     };
-    dockerModem.dial(request, function(err, data) {
-       if (err) {
-           return res.json(err);
-       }
+    dockerModem.dial(request, function (err, data) {
+        if (err) {
+            return res.json(err);
+        }
         else {
-           return res.json(data);
-       }
+            return res.json(data);
+        }
     });
 });
 
@@ -98,7 +98,7 @@ dockerapi.get('/containers/:id/top', function(req, res) {
  * Container stats.
  * FIXME later
  */
-dockerapi.get('/containers/:id/stats', function(req, res) {
+dockerapi.get('/containers/:id/stats', function (req, res) {
     var request = {
         path: '/containers/' + req.params.id + '/stats?',
         method: 'GET',
@@ -111,16 +111,38 @@ dockerapi.get('/containers/:id/stats', function(req, res) {
         options: {}
     };
 
-    dockerModem.dial(request, function(err, data) {
-       if (err) {
-           return res.json(err);
-       }
+    dockerModem.dial(request, function (err, data) {
+        if (err) {
+            return res.json(err);
+        }
         else {
-           console.log("here ! ");
-           data.on('data', function(containerStats) {
-               data.destroy();
-               return res.json(JSON.parse(containerStats));
-           });
-       }
+            console.log("here ! ");
+            data.on('data', function (containerStats) {
+                data.destroy();
+                return res.json(JSON.parse(containerStats));
+            });
+        }
+    });
+});
+
+/**
+ * Top.
+ */
+dockerapi.get('/containers/:id/top', function (req, res) {
+    var request = {
+        path: '/containers/' + this.id + '/top?',
+        method: 'GET',
+        statusCodes: {
+            200: true,
+            404: "no such container",
+            500: "server error"
+        }
+    };
+
+    dockerModem.dial(request, function (err, data) {
+        if (err) {
+            return res.json(err);
+        }
+        return res.json(data);
     });
 });

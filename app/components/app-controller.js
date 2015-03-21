@@ -1,5 +1,5 @@
 angular.module('dockrics')
-    .controller('appController', ['$scope', '$location', function($scope, $location) {
+    .controller('appController', ['$scope', '$location', function ($scope, $location) {
         /**
          * Used for bootstrap menu.
          */

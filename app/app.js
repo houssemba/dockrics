@@ -1,5 +1,5 @@
-angular.module('dockrics',  ['ngRoute', 'ngResource'])
-    .config(['$routeProvider', function($routeProvider) {
+angular.module('dockrics', ['ngRoute', 'ngResource'])
+    .config(['$routeProvider', function ($routeProvider) {
         'use strict';
         $routeProvider.
             when('/', {
@@ -13,6 +13,10 @@ angular.module('dockrics',  ['ngRoute', 'ngResource'])
             .when('/containers/:id', {
                 templateUrl: '/components/container/container.html',
                 controller: 'ContainerController'
+            })
+            .when('/containers/:id/top', {
+                templateUrl: '/components/containerTop/containerTop.html',
+                controller: 'ContainerTopController'
             })
             .otherwise({
                 redirectTo: '/'
