@@ -116,7 +116,6 @@ dockerapi.get('/containers/:id/stats', function (req, res) {
             return res.json(err);
         }
         else {
-            console.log("here ! ");
             data.on('data', function (containerStats) {
                 data.destroy();
                 return res.json(JSON.parse(containerStats));
@@ -126,23 +125,30 @@ dockerapi.get('/containers/:id/stats', function (req, res) {
 });
 
 /**
- * Top.
+ * Logs.
  */
-dockerapi.get('/containers/:id/top', function (req, res) {
-    var request = {
-        path: '/containers/' + this.id + '/top?',
+dockerapi.get('/containers/:id/logs', function (req, res) {
+    var optsf = {
+
+        path: '/containers/' + req.params.id + '/logs?',
         method: 'GET',
+        isStream: true,
         statusCodes: {
             200: true,
             404: "no such container",
             500: "server error"
+        },
+        options: {
+            stdout: req.query.stdout,
+            stderr: req.query.stderr,
+            tail: req.query.tail,
+            timestamps: req.query.timestamps
         }
     };
-
-    dockerModem.dial(request, function (err, data) {
+    dockerModem.dial(optsf, function (err, data) {
         if (err) {
             return res.json(err);
         }
-        return res.json(data);
+        data.pipe(res);
     });
 });

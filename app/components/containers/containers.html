@@ -3,25 +3,25 @@
 
     <table class="table">
         <thead>
-            <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Image</th>
-                <th>Command</th>
-                <th>Status</th>
-            </tr>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Command</th>
+            <th>Status</th>
+        </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="container in containers">
-                <td>
-                    <a class="btn btn-xs btn-success" title="Inspect" href="#/containers/{{container.Id}}"><span class="glyphicon glyphicon-eye-open"></span></a>
-                    <button class="btn btn-xs btn-danger" title="Stop container"><span class="glyphicon glyphicon-stop"></span></button>
-                </td>
-                <td>{{container.Names[0]}}</td>
-                <td>{{container.Image}}</td>
-                <td>{{container.Command}}</td>
-                <td><label class="label label-success">{{container.Status}}</label></td>
-            </tr>
+        <tr ng-repeat="container in containers">
+            <td>
+                <a class="btn btn-xs btn-success" title="Inspect" href="#/containers/{{container.Id}}"><span
+                        class="glyphicon glyphicon-eye-open"></span></a>
+            </td>
+            <td>{{container.Names[0]}}</td>
+            <td>{{container.Image}}</td>
+            <td>{{container.Command}}</td>
+            <td><label class="label label-success">{{container.Status}}</label></td>
+        </tr>
         </tbody>
     </table>
 </div>

@@ -18,6 +18,10 @@ angular.module('dockrics', ['ngRoute', 'ngResource'])
                 templateUrl: '/components/containerTop/containerTop.html',
                 controller: 'ContainerTopController'
             })
+            .when('/containers/:id/logs', {
+                templateUrl: '/components/containerLogs/containerLogs.html',
+                controller: 'ContainerLogsController'
+            })
             .otherwise({
                 redirectTo: '/'
             });
