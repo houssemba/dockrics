@@ -1,4 +1,12 @@
-<label>Stdout</label>
-<pre class="pre-scrollable">{{stdout}}</pre>
-<label>Stderr</label>
-<pre class="pre-scrollable">{{stderr}}</pre>
+<input type="text" ng-model="tail" class="input-sm">
+<button type="button" class="btn btn-success" ng-click="getLogs()">Tail</button>
+<div class="pull-right"><input type="checkbox" ng-model="timestamps" ng-change="getLogs()"> <label>Show
+    timestamps</label>
+</div>
+
+<div>
+    <label>Stdout</label>
+    <pre class="pre-scrollable">{{stdout}}</pre>
+    <label>Stderr</label>
+    <pre class="pre-scrollable">{{stderr}}</pre>
+</div>
