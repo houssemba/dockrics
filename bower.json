@@ -1,0 +1,24 @@
+{
+  "name": "dockrics",
+  "main": "index.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/houssemba/dockrics",
+  "authors": [
+    "Houssem BELHADJ AHMED <houssem@belhadjahmed.com>"
+  ],
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "epoch": "~0.6.0",
+    "ng-epoch": "~1.0.7"
+  }
+}

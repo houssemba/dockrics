@@ -1,4 +1,4 @@
-angular.module('dockrics', ['ngRoute', 'ngResource'])
+angular.module('dockrics', ['ngRoute', 'ngResource', 'ng.epoch'])
     .config(['$routeProvider', function ($routeProvider) {
         'use strict';
         $routeProvider.
@@ -23,6 +23,6 @@ angular.module('dockrics', ['ngRoute', 'ngResource'])
                 controller: 'ContainerLogsController'
             })
             .otherwise({
-                redirectTo: '/'
+                redirectTo: '/containers'
             });
     }])

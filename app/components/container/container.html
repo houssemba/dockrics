@@ -1,6 +1,41 @@
-<div class="containerStats">
-    <h3>{{container.Name}}</h3>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">CPU</h3>
+    </div>
+    <div class="panel-body">
+        <epoch-live-line chart-class="category10" chart-height="200" chart-data="cpuRealtimeLine"
+                         chart-stream="cpuRealtimeLineFeed" chart-axes="areaAxes"></epoch-live-line>
+    </div>
+    <div class="panel-footer text-center">
+        <label class="label label-primary">Total CPU Usage</label>
+    </div>
 </div>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Memory</h3>
+    </div>
+    <div class="panel-body">
+        <epoch-live-line chart-class="category10" chart-height="200" chart-data="memRealtimeLine"
+                         chart-stream="memRealtimeLineFeed" chart-axes="areaAxes"></epoch-live-line>
+    </div>
+    <div class="panel-footer text-center">
+        <label class="label label-primary">Total Memory Usage</label>
+    </div>
+</div>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Network</h3>
+    </div>
+    <div class="panel-body">
+        <epoch-live-line chart-class="category10" chart-height="200" chart-data="netRealtimeLine"
+                         chart-stream="netRealtimeLineFeed" chart-axes="areaAxes"></epoch-live-line>
+    </div>
+    <div class="panel-footer text-center">
+        <label class="label label-primary">Rx bytes</label>
+        <label class="label label-warning">Tx bytes</label>
+    </div>
+</div>
+
 <div class="containerDetails">
     <table class="table table-striped">
         <tbody>
@@ -13,51 +48,6 @@
         <tr>
             <td>Hostname:</td>
             <td>{{ container.Config.Hostname }}</td>
-        </tr>
-        <tr>
-            <td>Exposed Ports:</td>
-            <td>
-                <ul>
-                    <li ng-repeat="(k, v) in container.Config.ExposedPorts">{{ k }}</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Ports:</td>
-            <td>
-                <ul style="display:inline-table">
-                    <li ng-repeat="(containerport, hostports) in container.HostConfig.PortBindings">
-                        {{ containerport }} => <span class="label label-default" ng-repeat="(k,v) in hostports">{{ v.HostIp }}:{{ v.HostPort }}</span>
-                    </li>
-                </ul>
-            </td>
-
-        </tr>
-        <tr>
-            <td>IPAddress:</td>
-            <td>{{ container.NetworkSettings.IPAddress }}</td>
-        </tr>
-        <tr>
-            <td>Cmd:</td>
-            <td>{{ container.Config.Cmd }}</td>
-        </tr>
-        <tr>
-            <td>Entrypoint:</td>
-            <td>{{ container.Config.Entrypoint }}</td>
-        </tr>
-        <tr>
-            <td>Volumes:</td>
-            <td>{{ container.Volumes }}</td>
-        </tr>
-        <tr>
-            <td>SysInitpath:</td>
-            <td>{{ container.SysInitPath }}</td>
-        </tr>
-        <tr>
-            <td>Top:</td>
-            <td>
-                <a class="btn btn-xs btn-default" href="#/containers/{{container.Id}}/top">Docker Top</a>
-            </td>
         </tr>
         <tr>
             <td>Logs:</td>

@@ -5,6 +5,7 @@
     <title>Dockrics - The docker metrics app</title>
 
     <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/epoch/epoch.min.css">
 </head>
 <body ng-controller="appController">
 <nav class="navbar navbar-default">
@@ -15,9 +16,7 @@
             </a>
         </div>
         <ul class="nav navbar-nav">
-            <li ng-class="{active: isActive('/')}"><a href="#/">Dashboard</a></li>
             <li ng-class="{active: isActive('/containers')}"><a href="#/containers">Containers</a></li>
-            <li ng-class="{active: isActive('/settings')}"><a href="#/settings">Settings</a></li>
         </ul>
     </div>
 </nav>
@@ -25,13 +24,18 @@
     <div ng-view></div>
 </div>
 
+<script type="text/javascript" src="/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/d3/d3.min.js"></script>
 <script type="text/javascript" src="/angular/angular.js"></script>
+<script type="text/javascript" src="/epoch/epoch.min.js"></script>
+<script type="text/javascript" src="/ng-epoch/ng-epoch.js"></script>
+
+
 <script type="text/javascript" src="/angular-resource/angular-resource.js"></script>
 <script type="text/javascript" src="/angular-route/angular-route.js"></script>
 <script type="text/javascript" src="app.js"></script>
 <script type="text/javascript" src="components/app-controller.js"></script>
 <script type="text/javascript" src="components/services.js"></script>
-<script type="text/javascript" src="components/dashboard/dashboardController.js"></script>
 <script type="text/javascript" src="components/containers/containersController.js"></script>
 <script type="text/javascript" src="components/container/containerController.js"></script>
 <script type="text/javascript" src="components/containerTop/containerTopController.js"></script>

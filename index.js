@@ -15,6 +15,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use('/', express.static('node_modules'));
 app.use('/', express.static('app'));
+app.use('/', express.static('bower_components'));
 //var jsonParser = bodyParser.json();
 
 app.use('/dockerapi', dockerapi);
