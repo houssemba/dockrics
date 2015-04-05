@@ -1,28 +1,24 @@
-angular.module('dockrics', ['ngRoute', 'ngResource', 'ng.epoch'])
+angular.module('dockrics', ['ngRoute', 'ngResource'])
     .config(['$routeProvider', function ($routeProvider) {
         'use strict';
-        $routeProvider.
-            when('/', {
-                templateUrl: '/components/dashboard/dashboard.html',
-                controller: 'DashboardController'
-            })
+        $routeProvider
             .when('/containers', {
-                templateUrl: '/components/containers/containers.html',
+                templateUrl: 'components/containers/containers.html',
                 controller: 'ContainersController'
             })
             .when('/containers/:id', {
-                templateUrl: '/components/container/container.html',
+                templateUrl: 'components/container/container.html',
                 controller: 'ContainerController'
             })
             .when('/containers/:id/top', {
-                templateUrl: '/components/containerTop/containerTop.html',
+                templateUrl: 'components/containerTop/containerTop.html',
                 controller: 'ContainerTopController'
             })
             .when('/containers/:id/logs', {
-                templateUrl: '/components/containerLogs/containerLogs.html',
+                templateUrl: 'components/containerLogs/containerLogs.html',
                 controller: 'ContainerLogsController'
             })
             .otherwise({
                 redirectTo: '/containers'
             });
-    }])
+    }]);
